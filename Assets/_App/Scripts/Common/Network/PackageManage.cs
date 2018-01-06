@@ -74,7 +74,7 @@ namespace Kimmidoll
 				int iProtocol = buffer.ReadInt();
 				switch (iProtocol) {
 				case (int)CProtocol.RLogin://登录
-					List<Object> ol = new List<Object>();
+					List<System.Object> ol = new List<System.Object>();
 					ol.Add(iRet);
 
 					int iRet = buffer.ReadInt ();
