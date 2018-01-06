@@ -15,10 +15,21 @@ namespace GameJoy
 {
 	public class LobbyWnd : BaseWnd
 	{
+		[SerializeField]
+		Button _testPlay;
 
+
+		public event System.Action<GameObject> eventClickGameItem;
 		protected override void Start ()
 		{
 			base.Start ();
+			_testPlay.onClick.AddListener (OnClickTestPlay);
+		}
+
+		void OnClickTestPlay()
+		{
+			if (eventClickGameItem != null)
+				eventClickGameItem (_testPlay.gameObject);
 		}
 			
 

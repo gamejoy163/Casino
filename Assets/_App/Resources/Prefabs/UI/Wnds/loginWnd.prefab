@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114390163573750202}
   - component: {fileID: 114936038653451664}
   m_Layer: 5
-  m_Name: loginWndPrefab
+  m_Name: loginWnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

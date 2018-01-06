@@ -22,7 +22,7 @@ namespace GameJoy
 		{
 			get
 			{
-				return "Prefabs/UI/Wnds/loginWndPrefab";
+				return GlobalPath.Path_Prefabs_UI_Wnds + "loginWnd";
 			}
 		}
 		protected override void OnInitialize ()
@@ -54,7 +54,7 @@ namespace GameJoy
 			if (isLogin)
 			{
 				isLogin = false;
-				SceneManager.LoadSceneAsync("baccaratRoom");
+				SceneManager.LoadSceneAsync("lobby");
 			}
 		}
 

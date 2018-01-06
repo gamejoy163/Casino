@@ -21,12 +21,18 @@ namespace GameJoy
 		{
 			get
 			{
-				throw new System.NotImplementedException ();
+				return GlobalPath.Path_Prefabs_UI_Wnds + "lobbyWnd";
 			}
 		}
 		protected override void OnInitialize ()
 		{
 			base.OnInitialize ();
+			_wnd.eventClickGameItem += OnClickGameItem;
+		}
+
+		void OnClickGameItem(GameObject go)
+		{
+			SceneManager.LoadSceneAsync("baccaratRoom");
 		}
 	}
 }
