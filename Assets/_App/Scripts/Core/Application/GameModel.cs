@@ -7,11 +7,15 @@ using System;
 using Prosics.Utils;
 using Prosics.MVC;
 
+using Kimmidoll;
+
 
 namespace GameJoy
 {
     public class GameModel : Model , IGameModel
     {
+
+
         public ModelRef<UserModel> _userModel = null;
         public IUserModel userModel
         {
@@ -21,6 +25,15 @@ namespace GameJoy
             }
 
         }
+
+		public static NetworkInterface netInterface{private set; get;}
+
+
+
+
+		public GameModel()
+		{
+		}
 
 
     }

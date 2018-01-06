@@ -20,6 +20,11 @@ namespace GameJoy
 			Controller.Instantiate<UserController> (userM,transform);
 
 		}
+		protected override void Start ()
+		{
+			base.Start ();
+
+		}
 	}
 }
 
