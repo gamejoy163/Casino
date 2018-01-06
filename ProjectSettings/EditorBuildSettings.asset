@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_App/Sources/Scenes/luanch.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 1
     path: Assets/_App/Sources/Scenes/login.unity
     guid: 966fb3796ccf24892bd7519b73e15875
   - enabled: 1

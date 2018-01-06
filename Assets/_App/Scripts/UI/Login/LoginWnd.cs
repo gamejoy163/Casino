@@ -26,7 +26,7 @@ namespace GameJoy
 		{
 			base.Start ();
 			_loginBtn.onClick.AddListener (OnClickLoginBtn);
-			_accountInput.text = "3515";
+			_accountInput.text = "gggg";
 			_passwdInput .text = "95270";
 		}
 		void OnClickLoginBtn()
