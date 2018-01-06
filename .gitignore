@@ -7,3 +7,6 @@ Assembly-CSharp-firstpass.csproj
 Assembly-CSharp.csproj
 Casino.sln
 Casino.userprefs
+Library
+Temp
+obj
