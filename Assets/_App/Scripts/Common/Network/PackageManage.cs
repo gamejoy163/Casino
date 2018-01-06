@@ -76,9 +76,9 @@ namespace Kimmidoll
 				switch (iProtocol) {
 				case (int)CProtocol.RLogin://登录
 					List<System.Object> ol = new List<System.Object>();
-					ol.Add(iRet);
-
 					int iRet = buffer.ReadInt ();
+					ol.Add(iRet);
+					
 					if (iRet == 0) {
 						UserInfo.PlayerID = buffer.ReadInt ();
 						UserInfo.MyGold = Convert.ToUInt64(buffer.ReadULong ());
