@@ -29,7 +29,7 @@ namespace GameJoy
 
 		void OnClickLoginBtn(string account, string passwd)
 		{
-			Debug.Log ("click login");
+			Debug.Log ("click login:" + account + passwd);
 			NetMsgCenter.Request_Login (account,passwd);
 		}
 	}
