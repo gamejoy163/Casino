@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Casino/Scenes/login.unity
+    path: Assets/_App/Sources/Scenes/login.unity
     guid: 966fb3796ccf24892bd7519b73e15875
   - enabled: 1
-    path: Assets/Casino/Scenes/baccaratRoom.unity
+    path: Assets/_App/Sources/Scenes/baccaratRoom.unity
     guid: b7fce9409730a43108f73a10d6c92743
