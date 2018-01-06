@@ -22,7 +22,7 @@ namespace GameJoy
 		{
 			get
 			{
-				return "Prefabs/UI/loginWndPrefab";
+				return "Prefabs/UI/Wnds/loginWndPrefab";
 			}
 		}
 		protected override void OnInitialize ()

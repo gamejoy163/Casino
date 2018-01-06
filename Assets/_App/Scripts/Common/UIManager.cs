@@ -20,20 +20,10 @@ namespace GameJoy
 		[SerializeField]
 		Camera _uiCamera;
 		public Camera uiCamera{get{ return _uiCamera;}}
-		/*
-		public void LoadWnd<T>(string prefabPath) where T : BaseWnd
-		{
-			return LoadWnd<T> (prefabPath, null);
-		}
-		public T LoadWnd<T>(string prefabPath, Transform parent) where T : BaseWnd
-		{
-			GameObject prefab = ResManager.instance.Load (prefabPath) as GameObject;
-			GameObject go = GameObject.Instantiate (prefab);
-			go.transform.SetParent (parent);
-			T wnd =go.GetComponent<T> ();
-			SetWndOrder (wnd);
-			return wnd;
-		}*/
+
+
+
+		List<BaseWnd> _wndList = new List<BaseWnd>();
 		protected override void Awake ()
 		{
 			base.Awake ();
@@ -44,44 +34,34 @@ namespace GameJoy
 				_uiRoot = go.transform;
 			}
 		}
-
-		public void LoadWnd(string prefabPath, Transform parent)
-		{
-			GameObject prefab = ResManager.instance.Instantiation (prefabPath) as GameObject;
-			GameObject go = GameObject.Instantiate (prefab);
-			go.transform.SetParent (parent);
-			BaseWnd wnd =go.GetComponent<BaseWnd> ();
-			SetWndOrder (wnd);
-		}
-
-		public void LoadWnd<T>(string prefabPath, Transform parent)
-		{
-			GameObject prefab = ResManager.instance.Instantiation (prefabPath) as GameObject;
-			GameObject go = GameObject.Instantiate (prefab);
-			go.transform.SetParent (parent);
-			BaseWnd wnd =go.GetComponent<BaseWnd> ();
-			SetWndOrder (wnd);
-		}
+			
 
 		public void RegisterWnd(BaseWnd wnd)
 		{
+			
 			wnd.transform.SetParent(uiRoot);
 			wnd.transform.localPosition = Vector3.zero;
 			wnd.transform.localScale = Vector3.one;
-			SetWndOrder (wnd);
+			wnd.gameObject.GetComponent<Canvas> ().sortingOrder = GetNextSortOrder ();
+			_wndList.Add (wnd);
 		}
 		public void UnregisterWnd(BaseWnd wnd)
 		{
+			_wndList.Remove (wnd);
 			GameObject.Destroy (wnd.gameObject);
 		}
-
-
-
-
-
-
-		void SetWndOrder(BaseWnd wnd)
+			
+		int GetNextSortOrder()
 		{
+			int order = 0;
+			Canvas canvas = null;
+			foreach (BaseWnd wnd in _wndList)
+			{
+				canvas = wnd.gameObject.GetComponent<Canvas> ();
+				if (canvas.sortingOrder >= order)
+					order = canvas.sortingOrder;
+			}
+			return order + 1;
 			
 		}
     }

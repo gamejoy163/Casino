@@ -18,7 +18,7 @@ namespace GameJoy
 		{
 			base.Start ();
 			BaseWndModel m = new BaseWndModel ();
-			Controller.Instantiate<LoginWndController> (m);
+			Controller.Instantiate<LoginWndController> (m,transform);
 		}
 	}
 }
