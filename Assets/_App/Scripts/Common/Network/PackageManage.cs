@@ -74,6 +74,9 @@ namespace Kimmidoll
 				int iProtocol = buffer.ReadInt();
 				switch (iProtocol) {
 				case (int)CProtocol.RLogin://登录
+					List<Object> ol = new List<Object>();
+					ol.Add(iRet);
+
 					int iRet = buffer.ReadInt ();
 					if (iRet == 0) {
 						UserInfo.PlayerID = buffer.ReadInt ();
@@ -81,7 +84,12 @@ namespace Kimmidoll
 						UserInfo.Login = true;
 						Debug.Log ("UserInfo.playerID666=" + UserInfo.PlayerID);
 						Debug.Log ("UserInfo.myGold=" + UserInfo.MyGold);
+						ol.Add(UserInfo.PlayerID);
+						ol.Add(UserInfo.MyGold);
 					}
+					
+					NetMsgCenter.DispatchMsg((int)CProtocol.RLogin,ol);
+
 					break;
 				case (int)CProtocol.RGetRoomInfo://获取房间信息
 					int roomcount = buffer.ReadInt ();//房间个数
