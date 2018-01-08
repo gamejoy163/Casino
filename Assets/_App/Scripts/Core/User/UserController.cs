@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Prosics.Utils;
 using Prosics.MVC;
-
+using Kimmidoll;
 
 namespace GameJoy
 {
@@ -22,7 +22,26 @@ namespace GameJoy
         {
             base.Awake();
             GameObject.DontDestroyOnLoad(gameObject);
+			NetMsgCenter.instance.AddEventListener ((int)CProtocol.RLogin, OnLogin);
         }
+		protected override void OnDestroy ()
+		{
+			base.OnDestroy ();
+			NetMsgCenter.instance.RemoveEventListener ((int)CProtocol.RLogin,OnLogin);
+		}
+		void OnLogin(List<System.Object> args)
+		{
+			//model.uid = (int)args [2];
+			//model.golds = (int)args [3];
+
+			UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("lobby");
+		}
+
+
+
+
+
+
            
     }
 }

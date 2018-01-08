@@ -1,15 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_App/Scripts/UI/Lobby/LobbyWndController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_App/Scripts/Common/MVCMsgs.cs">
     <Files>
-      <File FileName="Assets/_App/Scripts/UI/Lobby/LobbyWndController.cs" Line="35" Column="48" />
-      <File FileName="Assets/_App/Scripts/UI/Login/LoginWndController.cs" Line="57" Column="5" />
-      <File FileName="Assets/_App/Scripts/UI/Lobby/LobbyWnd.cs" Line="26" Column="1" />
-      <File FileName="Assets/_App/Scripts/Core/LobbySceneDirector.cs" Line="17" Column="4" />
-      <File FileName="Assets/_App/Scripts/Core/LoginSceneDirector.cs" Line="8" Column="1" />
-      <File FileName="Assets/_App/Scripts/Common/GlobalPath.cs" Line="15" Column="72" />
-      <File FileName="Assets/_App/Scripts/UI/Login/LoginWnd.cs" Line="29" Column="30" />
-      <File FileName="Assets/_App/Scripts/Core/SceneDirector.cs" Line="23" Column="3" />
+      <File FileName="Assets/_App/Scripts/Core/User/UserModel.cs" Line="16" Column="33" />
+      <File FileName="Assets/_App/Scripts/Common/Account/UserInfo.cs" Line="13" Column="32" />
+      <File FileName="Assets/_App/Scripts/Core/User/IUserModel.cs" Line="14" Column="18" />
+      <File FileName="Assets/_App/Scripts/Core/User/UserController.cs" Line="25" Column="24" />
+      <File FileName="Assets/_App/Scripts/Common/MVCMsgs.cs" Line="19" Column="22" />
+      <File FileName="Assets/SDK/Prosics/MVC/Message.cs" Line="12" Column="22" />
+      <File FileName="Assets/SDK/Prosics/MVC/Model/IViewModel.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

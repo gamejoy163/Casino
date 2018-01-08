@@ -13,9 +13,17 @@ using Prosics.MVC;
 namespace GameJoy
 {
 	public abstract class BaseWndController<T,W> : Controller<T> 
-		where T : BaseWndModel  
+		where T : BaseWndModel, new()
 		where W : BaseWnd
 	{
+
+		public static void Create<C> (Transform parent) where C : BaseWndController<T,W>
+		{
+			T m = new T ();
+			Controller.Instantiate<C>(m,parent);
+		}
+
+
 		protected W _wnd = null;
 
 
@@ -24,6 +32,8 @@ namespace GameJoy
 		protected override void OnInitialize ()
 		{
 			InstantiateWnd ();
+			_wnd.eventClickCloseBtn += OnClickCloseBtn;
+
 		}
 
 		BaseWnd InstantiateWnd()
@@ -37,6 +47,10 @@ namespace GameJoy
 		{
 			base.OnDestroy ();
 			UIManager.instance.UnregisterWnd (_wnd);
+		}
+		void OnClickCloseBtn(GameObject go)
+		{
+			Destroy ();
 		}
 	}
 }

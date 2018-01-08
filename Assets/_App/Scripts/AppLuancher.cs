@@ -15,8 +15,13 @@ namespace GameJoy
         protected override void OnEnable()
         {
             base.OnEnable();
-			GameManager.instance.Init();
+
         }
+		protected override void Start ()
+		{
+			base.Start ();
+			GameManager.instance.Init();
+		}
     }   
 }
 

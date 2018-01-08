@@ -9,6 +9,11 @@ namespace GameJoy
 {
     public interface IUserModel
     {
+		int uid{ get; }
+		string nick{ get;}
+		int golds{get;}
+		int dianmonds{get;}
+		int HeadPicId{get;}
     }
 }
 

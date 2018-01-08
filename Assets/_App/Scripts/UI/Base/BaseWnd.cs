@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Prosics;
 using Prosics.Utils;
 
@@ -14,6 +15,33 @@ namespace GameJoy
 {
 	public class BaseWnd : MonoScriptBase
 	{
+		[SerializeField]
+		protected Button _bgCloseBtn;
+		[SerializeField]
+		protected Button _closeBtn;
+
+		public event System.Action<GameObject> eventClickCloseBtn;
+
+		protected override void Awake ()
+		{
+			base.Awake ();
+			if (_bgCloseBtn != null)
+				_bgCloseBtn.onClick.AddListener (OnClickBgCloseBtn);
+
+			if (_closeBtn != null)
+				_closeBtn.onClick.AddListener (OnClickCloseBtn);
+		}
+
+		protected virtual void  OnClickBgCloseBtn()
+		{
+			if (eventClickCloseBtn != null)
+				eventClickCloseBtn (_bgCloseBtn.gameObject);
+		}
+		protected virtual void  OnClickCloseBtn()
+		{
+			if (eventClickCloseBtn != null)
+				eventClickCloseBtn (_closeBtn.gameObject);
+		}
 	}
 }
 

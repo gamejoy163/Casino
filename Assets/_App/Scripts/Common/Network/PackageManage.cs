@@ -76,6 +76,7 @@ namespace Kimmidoll
 				switch (iProtocol) {
 				case (int)CProtocol.RLogin://登录
 					List<System.Object> ol = new List<System.Object>();
+					ol.Add(iProtocol);
 					int iRet = buffer.ReadInt ();
 					ol.Add(iRet);
 					
@@ -89,7 +90,7 @@ namespace Kimmidoll
 						ol.Add(UserInfo.MyGold);
 					}
 					
-					NetMsgCenter.DispatchMsg((int)CProtocol.RLogin,ol);
+						NetMsgCenter.instance.EnqueueMsg(ol);
 
 					break;
 				case (int)CProtocol.RGetRoomInfo://获取房间信息

@@ -4,54 +4,116 @@
 // Copyright (c) 2018 ${Author}
 // Description:
 //
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using Prosics;
+using Prosics.Utils;
 using Kimmidoll;
 
 namespace GameJoy
 {
-	public class NetMsgCenter
+	public class NetMsgCenter : MonoScriptBase
 	{
-
-		static Dictionary<int,List<Action<List<Object>>>> _handlerDic = new Dictionary<int, List<Action<List<object>>>> ();
-		public static void AddEventListener(int msgId, Action<List<Object>> handler)
+		static NetMsgCenter _instance = null;
+		public static NetMsgCenter instance
 		{
-			
+			get
+			{ 
+				if (_instance == null)
+				{
+					GameObject go = new GameObject (typeof(NetMsgCenter).Name);
+					go.AddComponent<NetMsgCenter> ();
+				}
+				return _instance;
+			}
+		}
+		protected override void Awake ()
+		{
+			base.Awake ();
+			_instance = this;
+			DontDestroyOnLoad (gameObject);
+		}
+		Dictionary<int,List<System.Action<List<System.Object>>>> _handlerDic = new Dictionary<int, List<System.Action<List<object>>>> ();
+
+		Queue<List<System.Object>> _msgQueue = new Queue<List<System.Object>> ();
+
+		protected override void FixedUpdate ()
+		{
+			base.FixedUpdate ();
+			DispatchMsgInMainThread ();
+
+		}
+		public void AddEventListener(int msgId, System.Action<List<System.Object>> handler)
+		{
+			Debug.Log ("AddEvent:" + msgId);
 			if (!_handlerDic.ContainsKey (msgId))
-				_handlerDic.Add (msgId,new List<Action<List<Object>>>());
-			List<Action<List<Object>>> handlers = _handlerDic [msgId];
+				_handlerDic.Add (msgId,new List<System.Action<List<System.Object>>>());
+			List<System.Action<List<System.Object>>> handlers = _handlerDic [msgId];
 			handlers.Add (handler);
 				
 				
 		}
-		public static void RemoveEventListener(int msgId, Action<List<Object>> handler)
+		public void RemoveEventListener(int msgId, System.Action<List<System.Object>> handler)
 		{
+			Debug.Log ("RemoveEvent:" + msgId);
 			if (_handlerDic.ContainsKey (msgId))
 			{
-				List<Action<List<Object>>> handlers = _handlerDic [msgId];
+				List<System.Action<List<System.Object>>> handlers = _handlerDic [msgId];
 				if (handlers.Contains (handler))
 					handlers.Remove (handler);
 			}
 
 
 		}
-
-		public static void DispatchMsg(int msgId,List<Object> args)
+		//线程锁 入栈消息
+		public void EnqueueMsg(List<System.Object> args)
+		{
+			lock (_msgQueue)
+			{
+				_msgQueue.Enqueue (args);
+			}
+		}
+		//分发消息
+		void DispatchMsg(int msgId,List<System.Object> args)
 		{
 			if (_handlerDic.ContainsKey (msgId))
 			{
-				List<Action<List<Object>>> handlers = _handlerDic [msgId];
-				foreach (Action<List<Object>> handler in handlers)
+				List<System.Action<List<System.Object>>> handlers = _handlerDic [msgId];
+				foreach (System.Action<List<System.Object>> handler in handlers)
 				{
 					handler (args);
 				}
 			}
 		}
+		//在FixedUpdate中分发消息
+		void DispatchMsgInMainThread()
+		{
+			while (_msgQueue.Count > 0)
+			{
+				List<System.Object> args = DequeueMsg ();
+				if (args != null)
+				{
+					int msgId = (int)args [0];
+					DispatchMsg (msgId, args);
+				}
+			}
+		}
+		//线程锁 出栈消息
+		List<System.Object> DequeueMsg()
+		{
+			List<System.Object> args = null;
+			lock (_msgQueue)
+			{
+				args = _msgQueue.Dequeue ();
+			}
+			return args;
+		}
 
 
 
-		public static void Request_Login(string account, string passwd)
+
+		public void Request_Login(string account, string passwd)
 		{
 			ByteBuffer buffer = new ByteBuffer();
 			buffer.WriteInt(0);
