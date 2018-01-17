@@ -1239,6 +1239,10 @@ MonoBehaviour:
   _shopBtn: {fileID: 114633146511900830}
   _friendstn: {fileID: 114994055721888902}
   _messageBtn: {fileID: 114541793246709700}
+  _goldsText: {fileID: 114231370761328988}
+  _diamondsText: {fileID: 114765441995956704}
+  _nickText: {fileID: 114396586602899368}
+  _uidText: {fileID: 114056522671253888}
 --- !u!114 &114168573642931400
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -40,6 +40,9 @@ namespace GameJoy
 			Message.AddListener (MVC_MsgId.Ntf_HeadPic_Changed.ToString(), UpdateUserHeadPic);
 
 			UpdateUserHeadPic ();
+			UpdateUserGolds ();
+			UpdateUserNick ();
+			UpdateUserUid ();
 
 
 		}
@@ -94,6 +97,18 @@ namespace GameJoy
 			Debug.Log ("OnHeadPicChanged!");
 			string path = GlobalPath.Path_Textures_HeadPics + "headPic" + GameManager.instance.gameModel.userModel.HeadPicId;
 			_wnd.SetHeadPic (path);	
+		}
+		void UpdateUserGolds()
+		{
+			_wnd.SetGolds (GameManager.instance.gameModel.userModel.golds);
+		}
+		void UpdateUserNick()
+		{
+			_wnd.SetUserNick (GameManager.instance.gameModel.userModel.nick);
+		}
+		void UpdateUserUid()
+		{
+			_wnd.SetUserUid (GameManager.instance.gameModel.userModel.uid.ToString());
 		}
 	}
 }

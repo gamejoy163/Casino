@@ -48,9 +48,17 @@ namespace GameJoy
 		Button _messageBtn;
 
 
+		[SerializeField]
+		Text _goldsText;
 
+		[SerializeField]
+		Text _diamondsText;
 
+		[SerializeField]
+		Text _nickText;
 
+		[SerializeField]
+		Text _uidText;
 
 
 		public event System.Action<GameObject> eventClickGameItem;
@@ -94,6 +102,19 @@ namespace GameJoy
 			Sprite spt = Sprite.Create (tex, new Rect (0, 0, tex.width, tex.height), new Vector2 (0.5f, 0.5f));
 			_headPic.sprite = spt;
 
+		}
+		public void SetGolds(int golds)
+		{
+			_goldsText.text = golds.ToString ();
+		}
+
+		public void SetUserNick(string nick)
+		{
+			_nickText.text = nick;
+		}
+		public void SetUserUid(string uid)
+		{
+			_uidText.text = uid;
 		}
 		void OnClickTestPlay()
 		{
