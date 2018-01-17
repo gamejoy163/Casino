@@ -28,7 +28,22 @@ namespace GameJoy
 		protected override void OnInitialize ()
 		{
 			base.OnInitialize ();
+			_wnd.eventSelectedHeadPic += OnSelectedHeadPic;
+			//Message.AddListener (MVC_MsgId.Ntf_HeadPic_Changed.ToString(), OnHeadPicChanged);
+			for (int i = 0; i < 5; i++)
+			{
+				_wnd.AddHeadPic (GlobalPath.Path_Textures_HeadPics + "headPic" + i,i);
+			}
 		}
+		protected override void OnDestroy ()
+		{
+			base.OnDestroy ();
+		}
+		void OnSelectedHeadPic(int headPicId)
+		{
+			NetMsgCenter.instance.Request_EditHeadPic (headPicId);
+		}
+
 	}
 }
 

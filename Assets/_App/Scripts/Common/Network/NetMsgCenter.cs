@@ -128,6 +128,15 @@ namespace GameJoy
 			buffer.WriteMd5();
 			UserInfo.Net.SendMessage(buffer.ToBytes());
 		}
+		public void Request_EditHeadPic(int headPicId)
+		{
+			ByteBuffer buffer = new ByteBuffer();
+			buffer.WriteInt(8);
+			buffer.WriteInt((int)CProtocol.SEditHeadPic);
+			buffer.WriteInt(headPicId);//headpicId
+			buffer.WriteMd5();
+			UserInfo.Net.SendMessage(buffer.ToBytes());
+		}
 	}
 }
 

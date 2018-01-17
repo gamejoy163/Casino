@@ -13,6 +13,15 @@ namespace GameJoy
 		public const string Path_Prefabs = "Prefabs/";
 		public const string Path_Prefabs_UI = Path_Prefabs + "UI/";
 		public const string Path_Prefabs_UI_Wnds = Path_Prefabs_UI + "Wnds/";
+
+		public const string Path_Prefabs_UI_Items = Path_Prefabs_UI + "Items/";
+
+
+
+
+
+		public const string Path_Textures = "Textures/";
+		public const string Path_Textures_HeadPics = Path_Textures + "HeadPics/";
 	}
 }
 

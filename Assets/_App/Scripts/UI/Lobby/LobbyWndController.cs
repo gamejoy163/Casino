@@ -37,6 +37,10 @@ namespace GameJoy
 			_wnd.eventClickAddGoldsBtn += OnAddGolds;
 			_wnd.eventClickAddDiamondBtn += OnAddDiamond;
 
+			Message.AddListener (MVC_MsgId.Ntf_HeadPic_Changed.ToString(), UpdateUserHeadPic);
+
+			UpdateUserHeadPic ();
+
 
 		}
 
@@ -84,6 +88,12 @@ namespace GameJoy
 		{
 			Debug.Log ("click:" + go.name);
 			HeadSelectWndController.Create<HeadSelectWndController>(LobbySceneDirector.instance.transform);
+		}
+		void UpdateUserHeadPic()
+		{
+			Debug.Log ("OnHeadPicChanged!");
+			string path = GlobalPath.Path_Textures_HeadPics + "headPic" + GameManager.instance.gameModel.userModel.HeadPicId;
+			_wnd.SetHeadPic (path);	
 		}
 	}
 }

@@ -20,7 +20,7 @@ namespace GameJoy
 		[SerializeField]
 		protected Button _closeBtn;
 
-		public event System.Action<GameObject> eventClickCloseBtn;
+		public event System.Action eventClickCloseBtn;
 
 		protected override void Awake ()
 		{
@@ -35,12 +35,12 @@ namespace GameJoy
 		protected virtual void  OnClickBgCloseBtn()
 		{
 			if (eventClickCloseBtn != null)
-				eventClickCloseBtn (_bgCloseBtn.gameObject);
+				eventClickCloseBtn ();
 		}
 		protected virtual void  OnClickCloseBtn()
 		{
 			if (eventClickCloseBtn != null)
-				eventClickCloseBtn (_closeBtn.gameObject);
+				eventClickCloseBtn ();
 		}
 	}
 }

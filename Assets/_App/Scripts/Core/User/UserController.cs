@@ -23,11 +23,13 @@ namespace GameJoy
             base.Awake();
             GameObject.DontDestroyOnLoad(gameObject);
 			NetMsgCenter.instance.AddEventListener ((int)CProtocol.RLogin, OnLogin);
+			NetMsgCenter.instance.AddEventListener ((int)CProtocol.REditHeadPic, OnEditHeadPic);
         }
 		protected override void OnDestroy ()
 		{
 			base.OnDestroy ();
 			NetMsgCenter.instance.RemoveEventListener ((int)CProtocol.RLogin,OnLogin);
+			NetMsgCenter.instance.RemoveEventListener ((int)CProtocol.REditHeadPic, OnEditHeadPic);
 		}
 		void OnLogin(List<System.Object> args)
 		{
@@ -35,6 +37,12 @@ namespace GameJoy
 			//model.golds = (int)args [3];
 
 			UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("lobby");
+		}
+
+		void OnEditHeadPic(List<System.Object> args)
+		{
+			Message.Send (MVC_MsgId.Ntf_HeadPic_Changed.ToString());
+
 		}
 
 

@@ -19,6 +19,9 @@ namespace GameJoy
 		Button _testPlay;
 
 		[SerializeField]
+		Image _headPic;
+
+		[SerializeField]
 		Button _profileBtn;
 
 		[SerializeField]
@@ -85,7 +88,13 @@ namespace GameJoy
 			if (_profileBtn != null)
 				_profileBtn.onClick.AddListener (OnClickProfileBtn);
 		}
+		public void SetHeadPic(string headPicPath)
+		{
+			Texture2D tex=	ResManager.instance.Load(headPicPath) as Texture2D;
+			Sprite spt = Sprite.Create (tex, new Rect (0, 0, tex.width, tex.height), new Vector2 (0.5f, 0.5f));
+			_headPic.sprite = spt;
 
+		}
 		void OnClickTestPlay()
 		{
 			if (eventClickGameItem != null)

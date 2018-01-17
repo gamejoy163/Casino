@@ -34,7 +34,11 @@ namespace Kimmidoll
 		SBalanceNotice = 0x207, 
 		RBalanceNotice = -0x207,
 		//金币变化通知
-		RGoldChanged = -0x200
+		RGoldChanged = -0x200,
+		//修改头像
+		SEditHeadPic = 0x208,
+		REditHeadPic = -0x208,
+
 	}
 
 	public class PackageManage 
@@ -73,6 +77,9 @@ namespace Kimmidoll
 				int packageLength = recvBytes.Length;
 				ByteBuffer buffer = new ByteBuffer(recvBytes, packageLength);
 				int iProtocol = buffer.ReadInt();
+				List<System.Object> args = new List<object>();
+				args.Add(iProtocol);
+
 				switch (iProtocol) {
 				case (int)CProtocol.RLogin://登录
 					List<System.Object> ol = new List<System.Object>();
@@ -92,6 +99,10 @@ namespace Kimmidoll
 					
 						NetMsgCenter.instance.EnqueueMsg(ol);
 
+					break;
+				case (int)CProtocol.REditHeadPic:
+						args.Add(buffer.ReadInt());
+						NetMsgCenter.instance.EnqueueMsg(args);
 					break;
 				case (int)CProtocol.RGetRoomInfo://获取房间信息
 					int roomcount = buffer.ReadInt ();//房间个数

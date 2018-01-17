@@ -48,7 +48,7 @@ namespace GameJoy
 			base.OnDestroy ();
 			UIManager.instance.UnregisterWnd (_wnd);
 		}
-		void OnClickCloseBtn(GameObject go)
+		void OnClickCloseBtn()
 		{
 			Destroy ();
 		}

@@ -9,7 +9,7 @@ namespace GameJoy
 {
     public interface IGameModel
     {
-        
+		IUserModel userModel{ get;}
     }
 }
 

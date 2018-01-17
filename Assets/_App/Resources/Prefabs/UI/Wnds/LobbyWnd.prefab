@@ -1227,7 +1227,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d958ec2e305d84e31a0cf85038d821ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bgCloseBtn: {fileID: 0}
+  _closeBtn: {fileID: 0}
   _testPlay: {fileID: 114673679748073300}
+  _headPic: {fileID: 114935435671188678}
   _profileBtn: {fileID: 114071745827358256}
   _addGoldsBtn: {fileID: 114178125081737202}
   _addDiamondBtn: {fileID: 114926315647232692}
@@ -1659,10 +1662,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 1
+  m_FillCenter: 0
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
